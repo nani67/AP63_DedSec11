@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "820720376647",
+    "firebase_url": "https://smartindiahackathon-2020.firebaseio.com",
+    "project_id": "smartindiahackathon-2020",
+    "storage_bucket": "smartindiahackathon-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820720376647:android:b4c0d13e50d8ff8d9a8a62",
+        "android_client_info": {
+          "package_name": "com.example.doctors_voice_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "820720376647-8eftkpklsrt9r3qt2ak2oh2mk6s5ojqa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doctors_voice_mobile",
+            "certificate_hash": "fbf830d7ed4cdfc3add240bd24b2e39bd9ad119a"
+          }
+        },
+        {
+          "client_id": "820720376647-b8bevg61irncvc3q9acmo0dbmgg00e0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADx13RDcTxVSxI7z8sUQAV0ikeSERi2gg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "820720376647-b8bevg61irncvc3q9acmo0dbmgg00e0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
