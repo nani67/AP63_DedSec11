@@ -247,7 +247,7 @@ String dateTime = DateFormat('yyyy-MM-dd_kk:mm').format(DateTime.now());
       _recording = current;
     });
 
-    _t = Timer.periodic(Duration(seconds: 10), (Timer t) async {
+    _t = Timer.periodic(Duration(milliseconds: 100), (Timer t) async {
       var current = await _recorder.current();
       setState(() {
         _recording = current;
@@ -264,6 +264,7 @@ String dateTime = DateFormat('yyyy-MM-dd_kk:mm').format(DateTime.now());
       _recording = result;
       isRecording = false;
     });
+
   }
 
 
@@ -278,136 +279,71 @@ String dateTime = DateFormat('yyyy-MM-dd_kk:mm').format(DateTime.now());
 
 
 
-  //   void activateSpeechRecognizer() {
-  //   print('_MyAppState.activateSpeechRecognizer... ');
-  //   _speech = new SpeechRecognition();
-  //   _speech.setAvailabilityHandler(onSpeechAvailability);
-  //   _speech.setRecognitionStartedHandler(onRecognitionStarted);
-  //   _speech.setRecognitionResultHandler(onRecognitionResult);
-  //   _speech.setRecognitionCompleteHandler(onRecognitionComplete);
-  //   _speech
-  //       .activate()
-  //       .then((res) => setState(() => _speechRecognitionAvailable = res));
-  // }
+  // void onRecognitionComplete(String ok) => setState(() {
+  //    isRecording = false;
+  //    transcription = ok;
+
+  //   String actualInfo = "";
+  //   List<String> transcriptParsed = transcription.split(" ");
+  //   List<String> modString = transcriptParsed.sublist(2);
+  //   modString.forEach((element) {
+  //     actualInfo = actualInfo  + element + " ";
+  //   });
+
+  //     if(transcriptParsed[0] == 'put' || transcriptParsed[0] == 'foot') {
+
+
+  //     switch(transcriptParsed[1]) {
+  //       case 'name': patientNameController.text = actualInfo; break;
+  //       case 'age': patientAgeController.text = transcriptParsed[2]; break;
+  //       case 'gender': patientGenderController.text = transcriptParsed[2]; break;
+  //       case 'symptom': symptomsP.text == "" ? symptomsP.text = actualInfo : symptomsP.text = symptomsP.text + ", " + actualInfo; print(symptomsP.text); break;
+  //       case 'diagnosis': diagnosisP.text == "" ? diagnosisP.text = actualInfo : diagnosisP.text = diagnosisP.text + ", " + actualInfo; break;
+  //       case 'prescription': prescP.text == "" ? prescP.text = actualInfo : prescP.text = prescP.text + ", " + actualInfo; break;
+  //       case 'advice': advicesP.text == "" ? advicesP.text = actualInfo : advicesP.text = advicesP.text + ", " + actualInfo; break;
+  //       default : break;
+  //     }
+
+
+  //     } else if(transcriptParsed[0]  == 'remove') {
+  //       print("Given order: Removing an element");
+
+
+  //     switch(transcriptParsed[1]) {
+  //       case 'name': patientNameController.text = ""; break;
+  //       case 'age': patientAgeController.text = ""; break;
+  //       case 'gender': patientGenderController.text = ""; break;
+  //       case 'symptoms': symptomsP.text = "";  break;
+  //       case 'diagnosis': diagnosisP.text = ""; break;
+  //       case 'prescription': prescP.text = ""; break;
+  //       case 'advice': advicesP.text = ""; break;
+  //       default : break;
+  //     }
 
 
 
-  // void start() => _speech
-  //     .listen(locale: selectedLang)
-  //     .then((result) {
-  //       print('_MyAppState.start => result $result');
-
-  //       setState(() {
-          
-  //       });
-  //     });
-
-  // void cancel() =>
-  //     _speech.cancel().then((result) => setState(() {isRecording = result;
-      
-  //             print("Status $isRecording");
-              
-  //             }));
-
-  // void stop() => _speech.stop().then((result) {
-  //       setState(() => isRecording = result);
-  //     });
-
-  // void onSpeechAvailability(bool result) =>
-  //     setState(() => _speechRecognitionAvailable = result);
+  //     } else if(transcriptParsed[0]  == "modify") {
+  //       print("Given order: modifying the element");
 
 
-  // void onRecognitionStarted() => setState(() => isRecording = true);
+  //     switch(transcriptParsed[1]) {
+  //       case 'name': patientNameController.text = actualInfo; break;
+  //       case 'age': patientAgeController.text = transcriptParsed[2]; break;
+  //       case 'gender': patientGenderController.text = transcriptParsed[2]; break;
+  //       case 'symptom': symptomsP.text = actualInfo;  break;
+  //       case 'diagnosis': diagnosisP.text = actualInfo; break;
+  //       case 'prescription': prescP.text = actualInfo; break;
+  //       case 'advice': advicesP.text = actualInfo; break;
+  //       default : break;
+  //     }
 
-  // void onRecognitionResult(String text) => setState(() {
-  //   transcription = text;
+  //     }
 
+
+  //   // response(transcription);
   // });
 
-
-  void onRecognitionComplete(String ok) => setState(() {
-     isRecording = false;
-     transcription = ok;
-    totalTranscript = totalTranscript + "[DOCTOR]: " + transcription + "\n";
-
-    String actualInfo = "";
-    List<String> transcriptParsed = transcription.split(" ");
-    List<String> modString = transcriptParsed.sublist(2);
-    modString.forEach((element) {
-      actualInfo = actualInfo  + element + " ";
-    });
-
-      if(transcriptParsed[0] == 'put' || transcriptParsed[0] == 'foot') {
-
-
-      switch(transcriptParsed[1]) {
-        case 'name': patientNameController.text = actualInfo; break;
-        case 'age': patientAgeController.text = transcriptParsed[2]; break;
-        case 'gender': patientGenderController.text = transcriptParsed[2]; break;
-        case 'symptom': symptomsP.text == "" ? symptomsP.text = actualInfo : symptomsP.text = symptomsP.text + ", " + actualInfo; print(symptomsP.text); break;
-        case 'diagnosis': diagnosisP.text == "" ? diagnosisP.text = actualInfo : diagnosisP.text = diagnosisP.text + ", " + actualInfo; break;
-        case 'prescription': prescP.text == "" ? prescP.text = actualInfo : prescP.text = prescP.text + ", " + actualInfo; break;
-        case 'advice': advicesP.text == "" ? advicesP.text = actualInfo : advicesP.text = advicesP.text + ", " + actualInfo; break;
-        default : break;
-      }
-
-
-      } else if(transcriptParsed[0]  == 'remove') {
-        print("Given order: Removing an element");
-
-
-      switch(transcriptParsed[1]) {
-        case 'name': patientNameController.text = ""; break;
-        case 'age': patientAgeController.text = ""; break;
-        case 'gender': patientGenderController.text = ""; break;
-        case 'symptoms': symptomsP.text = "";  break;
-        case 'diagnosis': diagnosisP.text = ""; break;
-        case 'prescription': prescP.text = ""; break;
-        case 'advice': advicesP.text = ""; break;
-        default : break;
-      }
-
-
-
-      } else if(transcriptParsed[0]  == "modify") {
-        print("Given order: modifying the element");
-
-
-      switch(transcriptParsed[1]) {
-        case 'name': patientNameController.text = actualInfo; break;
-        case 'age': patientAgeController.text = transcriptParsed[2]; break;
-        case 'gender': patientGenderController.text = transcriptParsed[2]; break;
-        case 'symptom': symptomsP.text = actualInfo;  break;
-        case 'diagnosis': diagnosisP.text = actualInfo; break;
-        case 'prescription': prescP.text = actualInfo; break;
-        case 'advice': advicesP.text = actualInfo; break;
-        default : break;
-      }
-
-      }
-
-
-    // response(transcription);
-  });
-
   bool uploadingPdfDone = true;
-
-  // void response(query) async {
-  //   AuthGoogle authGoogle = await AuthGoogle(fileJson: "assets/smartindiahackathon-2020-3534b86566c0.json").build();
-  //   Dialogflow dialogflow =Dialogflow(authGoogle: authGoogle);
-  //   AIResponse response = await dialogflow.detectIntent(query);
-  //   setState(() {
-  //     messageOutput = response.getMessage();
-  //     print(messageOutput);
-
-  //     QueryResult responseData = response.queryResult;
-
-  //     totalTranscript = totalTranscript + "[BOT]: " + messageOutput + "\n";
-  //     patientNameController.text = responseData == null ? '' : responseData.parameters['given-name'] == null ? '' : responseData.parameters['given-name'].toString();
-  //     patientGenderController.text = responseData == null ? '' : responseData.parameters['genderValue'] == null ? '' : responseData.parameters['genderValue'].toString() == null ? '' : responseData.parameters['genderValue'].toString();
-  //     patientAgeController.text = responseData == null ? '' : responseData.parameters['age'] == null || responseData.parameters['age'] is String ? ''  : responseData.parameters['age']['amount'].toString();
-  //   });
-  // }
 
   bool isClicked = false;
   Widget showHelpCard() {
@@ -638,13 +574,36 @@ String dateTime = DateFormat('yyyy-MM-dd_kk:mm').format(DateTime.now());
               if(isRecording) {
                 _startRecording();
               } else {
-                _stopRecording();
+                _stopRecording().whenComplete(() {
 
                   io.File file = new io.File(_recording.path);
                   var bytesData = file.readAsBytes();
                   bytesData.then((value) {
                     var base64String = base64.encode(value);
-                    speechActivation(base64String);
+                    speechActivation(base64String).then((x) {
+                      Map<String, dynamic> y = x.toJson();
+                        totalTranscript = totalTranscript + "[DOCTOR]: " + y['queryResult']['queryText'] + "\n";
+                        totalTranscript = totalTranscript + "[BOT]: " + y['queryResult']['fulfillmentText'] + "\n";
+                        print(y.toString());
+                        if(y['queryResult']['parameters'].toString().length < 3) {
+                          print("Parameters null");
+                          setState(() {
+                            
+                          });
+                        } else {
+                          print(y['queryResult']['parameters'].toString());
+                          setState(() {
+                            
+                          });
+                        }
+                    });
+
+                });
+
+
+
+
+
                   });
                   
                   setState(() {
